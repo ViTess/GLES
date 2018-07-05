@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    defaultConfig {
+        applicationId "app.vites.gles"
+        minSdkVersion 18
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        incremental true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.apkfuns.logutils:library:1.6.0'
+    implementation 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+}
