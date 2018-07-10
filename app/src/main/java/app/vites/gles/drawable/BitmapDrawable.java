@@ -5,9 +5,11 @@ import android.opengl.GLUtils;
 
 import app.vites.gles.GlesUtil;
 
+import static android.opengl.GLES20.GL_BLEND;
 import static android.opengl.GLES20.GL_TEXTURE_2D;
 import static android.opengl.GLES20.glBindTexture;
 import static android.opengl.GLES20.glDeleteTextures;
+import static android.opengl.GLES20.glDisable;
 
 /**
  * 最简单的绘制图片的texture

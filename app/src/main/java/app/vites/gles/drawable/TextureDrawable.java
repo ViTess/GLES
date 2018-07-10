@@ -10,6 +10,7 @@ import app.vites.gles.GlesUtil;
 import app.vites.gles.IDrawable;
 
 import static android.opengl.GLES20.GL_ARRAY_BUFFER;
+import static android.opengl.GLES20.GL_BLEND;
 import static android.opengl.GLES20.GL_FLOAT;
 import static android.opengl.GLES20.GL_TEXTURE0;
 import static android.opengl.GLES20.GL_TEXTURE_2D;
@@ -21,6 +22,7 @@ import static android.opengl.GLES20.glBufferSubData;
 import static android.opengl.GLES20.glDeleteBuffers;
 import static android.opengl.GLES20.glDeleteProgram;
 import static android.opengl.GLES20.glDeleteTextures;
+import static android.opengl.GLES20.glDisable;
 import static android.opengl.GLES20.glDrawArrays;
 import static android.opengl.GLES20.glEnableVertexAttribArray;
 import static android.opengl.GLES20.glGetAttribLocation;
@@ -275,7 +277,8 @@ public class TextureDrawable implements IDrawable {
      * call it before glDrawArrays
      */
     protected void onDraw() {
-
+        //关闭混合
+        glDisable(GL_BLEND);
     }
 
     private void runTasks() {
@@ -288,7 +291,7 @@ public class TextureDrawable implements IDrawable {
 //        if (Thread.currentThread().getName().startsWith("GLThread"))
 //            runnable.run();
 //        else
-            mTaskList.add(runnable);
+        mTaskList.add(runnable);
     }
 
     /**
