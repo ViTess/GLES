@@ -43,6 +43,7 @@ public class TestRenderer implements GLSurfaceView.Renderer {
         LogUtils.i("onSurfaceChanged");
         mOutputWidth = width;
         mOutputHeight = height;
+        LogUtils.i("width:%d,height:%d", width, height);
         GLES20.glViewport(0, 0, width, height);
         checkDrawable(mDrawable).setOutputSize(width, height);
     }

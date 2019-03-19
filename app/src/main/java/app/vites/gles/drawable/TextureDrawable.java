@@ -205,7 +205,7 @@ public class TextureDrawable implements IDrawable {
     public void setOutputSize(int outputWidth, int outputHeight) {
         mOutputWidth = mOriginOutputWidth = outputWidth;
         mOutputHeight = mOriginOutputHeight = outputHeight;
-        setupScaleType();
+        setScaleType(mScaleType);
     }
 
     public final int getOutputWidth() {
