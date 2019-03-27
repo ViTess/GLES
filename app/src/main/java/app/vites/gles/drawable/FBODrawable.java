@@ -90,6 +90,7 @@ public final class FBODrawable extends TextureDrawable {
             glBindFramebuffer(GL_FRAMEBUFFER, mFBOId[0]);
             GlesUtil.checkError("glBindFramebuffer");
 
+            //TODO:目前考虑的都是2d层面的opengl操作，所以frameBuffer只需要颜色缓存(即绑定Texture)即可，如果涉及到3d，需要用到深度缓存(即RenderBuffer)
             glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, mTextureId[0], 0);
             GlesUtil.checkError("glFramebufferTexture2D");
 
