@@ -64,7 +64,7 @@ public final class FBODrawable extends TextureDrawable {
 
     @Override
     public void setOutputSize(int outputWidth, int outputHeight) {
-        if (mOutputWidth != outputWidth || mOutputHeight != outputHeight) {
+//        if (mOutputWidth != outputWidth || mOutputHeight != outputHeight) {
             mOutputWidth = outputWidth;
             mOutputHeight = outputHeight;
 
@@ -95,7 +95,7 @@ public final class FBODrawable extends TextureDrawable {
             GlesUtil.checkError("glFramebufferTexture2D");
 
             glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        }
+//        }
 
         for (IDrawable drawable : mDrawableList) {
             if (drawable != null) {

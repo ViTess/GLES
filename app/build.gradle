@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.apkfuns.logutils:library:1.6.0'
+    implementation 'com.apkfuns.logutils:library:1.6.1'
     implementation 'com.android.support:appcompat-v7:25.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 }

@@ -40,7 +40,6 @@ public class TestRenderer implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        LogUtils.i("onSurfaceChanged");
         mOutputWidth = width;
         mOutputHeight = height;
         LogUtils.i("width:%d,height:%d", width, height);
@@ -70,6 +69,10 @@ public class TestRenderer implements GLSurfaceView.Renderer {
         while (!mTaskList.isEmpty()) {
             mTaskList.removeFirst().run();
         }
+    }
+
+    public void addTasks(Runnable runnable) {
+        mTaskList.add(runnable);
     }
 
     public void release() {

@@ -1,9 +1,11 @@
 package app.vites.gles;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import app.vites.gles.drawable.BitmapDrawable;
 import app.vites.gles.drawable.BlendDrawable;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     FBODrawable mFBODrawable;
     BitmapDrawable mBitmapDrawable;
     BlendDrawable mBlendDrawable;
+    TestRenderer mRenderer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,13 @@ public class MainActivity extends AppCompatActivity {
         mFBODrawable.addDrawable(mBitmapDrawable);
         mFBODrawable.addDrawable(mBlendDrawable);
 
-        glSurfaceView.setDrawable(mFBODrawable);
+        mRenderer = new TestRenderer();
+        mRenderer.setDrawable(mFBODrawable);
+        glSurfaceView.setRenderer(mRenderer);
+
+        View btn = findViewById(R.id.btn_camera);
+        btn.setVisibility(View.VISIBLE);
+        btn.setOnClickListener(v -> startActivity(new Intent(this, CameraActivity.class)));
     }
 
     @Override
@@ -59,5 +68,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mRenderer.release();
     }
 }

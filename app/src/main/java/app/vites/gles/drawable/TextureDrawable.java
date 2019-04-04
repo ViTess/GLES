@@ -45,9 +45,9 @@ public class TextureDrawable implements IDrawable {
     private final LinkedList<Runnable> mTaskList = new LinkedList<>();//确保操作在GLThread中运行
     private float mWidthRatio = 1, mHeightRatio = 1;
     private int mInputWidth, mInputHeight;
-    private float mColorAlpha = 1;
+    protected float mColorAlpha = 1;
 
-    protected boolean isInit = false;
+//    protected boolean isInit = false;
     protected boolean isDeleteTex = false;
     protected int mProgramId;
     protected final int[] mTextureId = new int[]{NO_TEXTURE};
@@ -70,8 +70,8 @@ public class TextureDrawable implements IDrawable {
     protected int mUColorAlphaLoc;
 
     //vbo
-    private final int[] mVertexVBOId = new int[1];
-    private final int[] mTexCoordVBOId = new int[1];
+    protected final int[] mVertexVBOId = new int[1];
+    protected final int[] mTexCoordVBOId = new int[1];
 
     //原始的顶点坐标(中心点屏幕中央)
     protected final float[] mOriginVertexCoord = new float[]{
@@ -95,14 +95,16 @@ public class TextureDrawable implements IDrawable {
     public TextureDrawable() {
         mVertexData = GlesUtil.createFloatBuffer(mOriginVertexCoord);
         mTexCoordData = GlesUtil.createFloatBuffer(mTexCoord);
+
+        System.arraycopy(mOriginVertexCoord, 0, mVertexCoord, 0, mVertexCoord.length);
     }
 
     @Override
     public final void init() {
-        if (isInit)
-            return;
-
-        isInit = true;
+//        if (isInit)
+//            return;
+//
+//        isInit = true;
         onInit();
     }
 
@@ -171,10 +173,10 @@ public class TextureDrawable implements IDrawable {
 
     @Override
     public final void destroy() {
-        if (!isInit)
-            return;
-
-        isInit = false;
+//        if (!isInit)
+//            return;
+//
+//        isInit = false;
         onDestroy();
 
         if (isDeleteTex) {
@@ -281,13 +283,13 @@ public class TextureDrawable implements IDrawable {
         glDisable(GL_BLEND);
     }
 
-    private void runTasks() {
+    protected void runTasks() {
         while (!mTaskList.isEmpty()) {
             mTaskList.removeFirst().run();
         }
     }
 
-    protected void addTask(Runnable runnable) {
+    public final void addTask(Runnable runnable) {
 //        if (Thread.currentThread().getName().startsWith("GLThread"))
 //            runnable.run();
 //        else

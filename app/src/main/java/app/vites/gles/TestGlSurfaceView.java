@@ -16,10 +16,6 @@ import app.vites.gles.drawable.SourceOverBlendDrawable;
  */
 public class TestGlSurfaceView extends GLSurfaceView {
 
-    private TestRenderer mRenderer;
-    private SourceOverBlendDrawable mSBDrawable;
-    private FBODrawable mFBODrawable;
-
     public TestGlSurfaceView(Context context) {
         super(context);
         init();
@@ -32,28 +28,18 @@ public class TestGlSurfaceView extends GLSurfaceView {
 
     void init() {
         setEGLContextClientVersion(2);
-
-        mRenderer = new TestRenderer();
-        setRenderer(mRenderer);
         getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                LogUtils.i("surfaceCreated");
             }
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-                LogUtils.i("surfaceChanged");
             }
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
-                LogUtils.i("surfaceDestroyed");
             }
         });
-    }
-
-    public void setDrawable(IDrawable drawable){
-        mRenderer.setDrawable(drawable);
     }
 }
